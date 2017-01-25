@@ -27,6 +27,7 @@ services:
                 - INSTALL_WORKSPACE_SSH=false
                 - INSTALL_LARAVEL_ENVOY=false
                 - INSTALL_LINUXBREW=false
+                - INSTALL_NODE_MODULES=true
                 - PUID=1000
                 - PGID=1000
                 - NODE_VERSION=stable

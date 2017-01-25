@@ -325,6 +325,19 @@ RUN if [ ${INSTALL_LINUXBREW} = true ]; then \
     echo 'export LD_LIBRARY_PATH="$LINUXBREWHOME/lib64:$LINUXBREWHOME/lib:$LD_LIBRARY_PATH"' >> ~/.bashrc \
 ;fi
 
+#####################################
+# Install Node Global Modules:
+#####################################
+USER root
+
+ARG INSTALL_NODE_MODULES=true
+ENV INSTALL_NODE_MODULES ${INSTALL_NODE_MODULES}
+
+RUN if [ ${INSTALL_NODE_MODULES} = true ]; then \
+    # Install desired node global modules
+    npm i -g npms-cli package-menu-cli pkg-version-cli latest-version-cli
+;fi
+
 #
 #--------------------------------------------------------------------------
 # Final Touch
