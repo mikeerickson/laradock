@@ -348,6 +348,7 @@ USER root
 
 ARG INSTALL_LINUXBREW=true
 ENV INSTALL_LINUXBREW ${INSTALL_LINUXBREW}
+ENV INSTALL_VIM ${INSTALL_VIM}
 
 RUN if [ ${INSTALL_LINUXBREW} = true ]; then \
 
@@ -372,6 +373,15 @@ RUN if [ ${INSTALL_LINUXBREW} = true ]; then \
     echo 'export MANPATH="$LINUXBREWHOME/man:$MANPATH"' >> ~/.bashrc && \
     echo 'export PKG_CONFIG_PATH="$LINUXBREWHOME/lib64/pkgconfig:$LINUXBREWHOME/lib/pkgconfig:$PKG_CONFIG_PATH"' >> ~/.bashrc && \
     echo 'export LD_LIBRARY_PATH="$LINUXBREWHOME/lib64:$LINUXBREWHOME/lib:$LD_LIBRARY_PATH"' >> ~/.bashrc \
+;fi
+
+RUN if [ ${INSTALL_VIM} = true ]; then \
+
+    # Preparation
+    apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install vim
+
 ;fi
 
 #####################################

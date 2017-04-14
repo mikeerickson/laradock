@@ -69,3 +69,7 @@ function md() {
 function xtree {
     find ${1:-.} -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 }
+
+# Customize prompt
+PS1="\[\e]0;\u@\h: \w\a\]\n\[\033[\033[36m\u@\h \[\033[32m\]\w\[\033[0;90m\] [docker:workspace] \n$ \[\033[0;33m\]\[\033[0;37m\]"
+
